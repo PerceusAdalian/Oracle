@@ -60,11 +60,12 @@ def main():
         option = input('Please make a selection or type [h]elp/[e]xit: ')
         if option == 'h':
             animatePrint(f'''
-            Options: 
-            - [1] Convert Binary
-            - [2] Convert Integer
-            - [3] Convert Hexadecimal
-            - [4] Convert Octal''',2)
+    Options: 
+    - [1] Convert Binary
+    - [2] Convert Integer
+    - [3] Convert Hexadecimal
+    - [4] Convert Octal
+    ''',2)
             continue
         if option == 'e':
             animatePrint(f'Exiting program..',1)
@@ -111,4 +112,5 @@ def main():
     
     return 0
 main()
+
 
