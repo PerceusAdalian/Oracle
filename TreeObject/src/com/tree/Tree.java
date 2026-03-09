@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Tree 
+public abstract class Tree 
 {
     /**
      * This class represents and houses helper methods to construct a Binary Search Tree (BST).
@@ -14,7 +14,7 @@ public class Tree
     //---------------------- Fields ----------------------//
     public static final Map<String, Tree> list = new HashMap<>();
     public static final int MAX = 100;
-    private TreeNode root;
+    public TreeNode root;
 
     //---------------------- Constructors ----------------------//
     public Tree(ArrayList<Integer> arr) // Constructor to initialize the tree with an array of integers 
@@ -37,10 +37,11 @@ public class Tree
             left = right = null;
         }
     }
+
     //---------------------- Core Functions ----------------------//
     public static void load(String name, ArrayList<Integer> arr) // Static method to load a tree with a given name and an array of integers
     {
-        Tree tree = new Tree(arr);
+        Tree tree = new Tree(arr) {};
         list.put(name, tree);
     }
 
@@ -69,7 +70,7 @@ public class Tree
         return this;
     }
 
-    private TreeNode deleteNodeRec(TreeNode root, int value) // Helper method to delete a node with a specific value from the tree recursively
+    public TreeNode deleteNodeRec(TreeNode root, int value) // Helper method to delete a node with a specific value from the tree recursively
     {
         if (root == null) 
         {
@@ -106,7 +107,7 @@ public class Tree
         inorderRec(root);
     }
 
-    private void inorderRec(TreeNode root) // Helper method to perform an inorder traversal of the tree recursively
+    public void inorderRec(TreeNode root) // Helper method to perform an inorder traversal of the tree recursively
     {
         if (root != null) 
         {
@@ -123,7 +124,7 @@ public class Tree
 
     public Tree copyTree() // Method to create a copy of the tree via deep copying the nodes
     {
-        Tree newTree = new Tree(new ArrayList<>());
+        Tree newTree = new Tree(new ArrayList<>()) {};
         newTree.setRoot(copyNode(root));
         return newTree;
     }
@@ -237,7 +238,7 @@ public class Tree
         TreeNode node = traverse(value);
         if (node != null) 
         {
-            Tree subtree = new Tree(new ArrayList<>());
+            Tree subtree = new Tree(new ArrayList<>()) {};
             subtree.setRoot(node);
             return subtree;
         }
@@ -249,7 +250,7 @@ public class Tree
         TreeNode node = traverse(value);
         if (node != null && node.left != null) 
         {
-            Tree subtree = new Tree(new ArrayList<>());
+            Tree subtree = new Tree(new ArrayList<>()) {};
             subtree.setRoot(node.left);
             return subtree;
         }
@@ -261,7 +262,7 @@ public class Tree
         TreeNode node = traverse(value);
         if (node != null && node.right != null) 
         {
-            Tree subtree = new Tree(new ArrayList<>());
+            Tree subtree = new Tree(new ArrayList<>()) {};
             subtree.setRoot(node.right);
             return subtree;
         }
@@ -322,7 +323,7 @@ public class Tree
 
     public Tree mergeTrees(Tree other) // Method to merge another tree into the current tree
     {
-        Tree mergedTree = new Tree(new ArrayList<>());
+        Tree mergedTree = new Tree(new ArrayList<>()) {};
         mergeNodes(this.root, mergedTree);
         mergeNodes(other.root, mergedTree);
         return mergedTree;
